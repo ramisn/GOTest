@@ -94,6 +94,6 @@
         <variable name="SENDER_ID" value="246388735668" />
         <variable name="FCM_VERSION" value="11.6.2" />
     </plugin>
+    <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="4.5.4" />
-    <engine name="android" spec="~7.0.0" />
 </widget>

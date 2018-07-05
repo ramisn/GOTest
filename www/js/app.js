@@ -43,27 +43,27 @@ rico.run(function ($window, $ionicPlatform, $cordovaMedia, $cordovaPushV5, $cord
         }
 
         //window.plugins.imeiplugin.getImei(callback);
-            // $cordovaPushV5.initialize(options).then(function () {
-            //   // console.log('push');
-            //     //start listening for new notifications
-            //     $cordovaPushV5.onNotification();
-            //     // start listening for errors
-            //     $cordovaPushV5.onError();
+            $cordovaPushV5.initialize(options).then(function () {
+              // console.log('push');
+                //start listening for new notifications
+                $cordovaPushV5.onNotification();
+                // start listening for errors
+                $cordovaPushV5.onError();
 
-            //     //register to get registrationId
-            //     $cordovaPushV5.register().then(function (registrationId) {
-            //         //alert(registrationId);
-            //         $rootScope.deviceRegId = registrationId;
-            //         // save `registrationId` somewhere;
-            //     });
-            // });
+                //register to get registrationId
+                $cordovaPushV5.register().then(function (registrationId) {
+                    //alert(registrationId);
+                    $rootScope.deviceRegId = registrationId;
+                    // save `registrationId` somewhere;
+                });
+            });
 
     });
 
     // triggered every time notification received
     $rootScope.$on('$cordovaPushV5:notificationReceived', function (event, data) {
         // toaster.pop('success', "Notification", data.message);
-        
+        console.log(data);
         debugger;
         if (data.additionalData.foreground === false) {
             toaster.pop('success', "Notification", data.message);

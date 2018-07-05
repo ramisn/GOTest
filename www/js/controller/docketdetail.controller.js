@@ -76,38 +76,8 @@ rico.controller('docketdetailCtrl', function ($scope, $window, $rootScope, $stat
             debugger;
             $scope.docketDetailList = data.Data;
             $scope.selectData($scope.docketDetailList);
-            //alert(JSON.stringify(data.Data));
             console.log($scope.docketDetailList);
-            // console.log($scope.docketDetailList.IsRevETA);
-            // console.log($scope.docketDetailList.DeliverBy);
-            // console.log($scope.docketDetailList.Delivery[0].DropDeliveryDate);
-            // // var revETA = ($scope.docketDetailList.IsRevETA == true);
-            // // console.log($scope.docketDetailList.IsRevETA == true);
-            // // console.log(localStorage.docketETALen);
-
-            // var revETA = 0
             
-            // if ($scope.docketDetailList.IsRevETA == false){
-            //     revETA = revETA + 1
-            //   }
-
-            // console.log(revETA);
-            
-            
-            // if (localStorage.docketETALen){
-            //   if (($scope.docketDetailList.IsRevETA == true) > (localStorage.docketETALen)){
-            //   // if ($scope.docketDetailList.DeliverBy != $scope.docketDetailList.Delivery[0].DropDeliveryDate){  
-            //     var audio = new Audio('audio/Alert.mp3');
-            //     audio.play();
-            //     // var src = "/android_asset/www/audio/Alert.mp3";
-            //     // var media = $cordovaMedia.newMedia(src);
-            //     // media.play();
-            //   }
-            // }
-
-            // localStorage.docketETALen = ($scope.docketDetailList.IsRevETA == true).length;
-            // console.log(localStorage.docketETALen);
-
         }, function (errData, errStatus) {
             //toaster.pop('error', "Network Error!", "Check your Network Connection!");
             $ionicLoading.hide();
@@ -217,21 +187,16 @@ rico.controller('docketdetailCtrl', function ($scope, $window, $rootScope, $stat
                                 { text: 'No' }, {
                                     text: '<b>Yes</b>',
                                     type: 'button-positive',
-                                    //onTap: function (e) {
-
-                                    //    if (!$scope.data.model) {
-                                    //        //don't allow the user to close unless he enters model...
-                                    //        e.preventDefault();
-                                    //    } else {
-                                    //        return $scope.data.model;
-                                    //    }
-                                    //}
+                                    onTap: function (e) {
+                                      return true
+                                    }
                                 }
                             ]
 
                         });
 
                         confirmPopup.then(function (res) {
+                          console.log(res);
                             if (res) {
 
                                 $ionicLoading.show({

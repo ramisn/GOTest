@@ -7,9 +7,8 @@ rico.controller('docketlistCtrl', function ($scope, $rootScope, $state, $statePa
     $rootScope.$broadcast('myEvent', data);
   }, function (errData, errStatus) {
     //debugger;
-
-
   });
+
   $scope.InitDocketList = function (loader) {
     $scope.starttime = new Date();
     // toaster.pop('warning', "Start", "DocketList!" + new Date());
@@ -26,15 +25,24 @@ rico.controller('docketlistCtrl', function ($scope, $rootScope, $state, $statePa
     //var input = { driverID: "3", X3DriverCode: "DRV0000003" }
     docketlistservice.docketlist(input, function (data, status) {
         //toaster.pop('warning', "INFO", "Test Message");
-      debugger
-      if (data.ErrorList.HasError) {
-          //alert(JSON.stringify(data.ErrorList.ErrorMessage));
+        // console.log(data);
+      // debugger
+      $scope.docketListData = data.Data;
+      console.log($scope.docketListData.length);
+      
+      if (data.ErrorList.HasError && $scope.docketListData.length == 0) {
+        console.log($scope.docketListData);
+          // alert(JSON.stringify(data.ErrorList.ErrorMessage));
         $scope.docketListData = "";
         toaster.pop('warning', "INFO", data.ErrorList.ErrorMessage);
+        // toaster.pop('warning', "INFO", "RAMI");
         $ionicLoading.hide();
         $scope.$broadcast('scroll.refreshComplete');
         return false;
+        $scope.InitDocketList(false);
+
       }
+      // $scope.InitDocketList(true);
       $scope.endtime = new Date();
       // toaster.pop('warning', "END", "DocketList!" + new Date() + " Diffrence = " + (($scope.endtime.getTime() - $scope.starttime.getTime()) / 1000) + " sec");
       $ionicLoading.hide();
@@ -155,7 +163,7 @@ rico.controller('docketlistCtrl', function ($scope, $rootScope, $state, $statePa
       $rootScope.$emit('unselectAll', false);
     });
   }
-
+  // console.log('Init');
   $scope.InitDocketList(true);
 
   $ionicPlatform.on('resume', function () {

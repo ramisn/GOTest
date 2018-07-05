@@ -178,7 +178,7 @@ rico
           template: 'Are you sure want to Logout?'
 
         });
-        console.log(JSON.parse(localStorage.driver).DriverID);
+        // console.log(JSON.parse(localStorage.driver).DriverID);
         var rami = {
           "LoginFlag": 0,
           "UserID": JSON.parse(localStorage.driver).DriverID
@@ -188,7 +188,7 @@ rico
           if (res) {
 
             loginservice.loggedout(rami, function (data, status) {
-              console.log(rami);
+              // console.log(rami);
               },
             function (data, status) {
               //$ionicLoading.hide();
